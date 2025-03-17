@@ -105,6 +105,7 @@
 |로그아웃|POST|/users/logout|로그아웃을 할 수 있습니다.|
 |과목 검색|GET|/subjects?name=|과목명, 학과명, 과목 유형 조건을 통해 특정 과목을 검색할 수 있습니다.|
 |과목 단 건 조회|GET|/subjects/{subjectId}|과목을 단 건 조회할 수 있습니다.|
+|학과 전체 조회|GET|/departments|학과를 전체 조회할 수 있습니다.|
 
 ### 2️⃣ 학생
 |기능|Method|URL|설명|
@@ -126,4 +127,4 @@
 |학과 등록|POST|/admins/departments|학과를 등록할 수 있습니다.|
 |학과 수정|PATCH|/admins/departments/{departmentId}|학과 정보를 수정할 수 있습니다.|
 |학과 삭제|DELETE|/admins/departments/{departmentId}|학과를 삭제할 수 있습니다.|
-|학과 전체 조회|GET|/admins/departments|학과를 전체 조회할 수 있습니다.|
+|학과 단 건 조회|GET|/admins/departments/{departmentId}|학과를 단 건 조회할 수 있습니다.|
