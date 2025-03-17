@@ -65,7 +65,7 @@
 # 🧩 설계
 
 ## ERD
-![academic-management](https://github.com/user-attachments/assets/cb192548-518d-481a-a39c-da42dd0acd9e)
+![academic-management (1)](https://github.com/user-attachments/assets/abba19de-d3e3-4248-b2f5-c0dcc674301c)
 
 ### 1️⃣ 사용자 Table
 |id|department_id|name|login_id|password|code|academic_year|role|created_at|updated_at|
