@@ -35,7 +35,7 @@ class User(
     @Column(length = 200)
     var password: String = password
 
-    @Column(length = 20)
+    @Column(length = 20, unique = true)
     var code: String? = code
 
     var academicYear: Year? = academicYear
