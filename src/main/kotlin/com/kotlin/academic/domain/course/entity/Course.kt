@@ -7,6 +7,7 @@ import org.springframework.data.annotation.CreatedDate
 import java.time.LocalDateTime
 
 @Entity
+@Table(name = "course_enrollment")
 class Course(student: User, subject: Subject) {
 
     @Id
