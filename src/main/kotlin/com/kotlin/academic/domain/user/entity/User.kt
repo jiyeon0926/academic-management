@@ -9,6 +9,7 @@ import jakarta.persistence.*
 import java.time.Year
 
 @Entity
+@Table(name = "users")
 class User(
     department: Department?,
     name: String,
