@@ -31,4 +31,8 @@ class Department(code: String, name: String) : BaseEntity() {
         cascade = [CascadeType.ALL])
     @JoinColumn(name = "department_id")
     var subjects: MutableList<Subject> = mutableListOf()
+
+    fun updateName(newName: String) {
+        this.name = newName
+    }
 }
