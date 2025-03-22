@@ -25,11 +25,11 @@ class Subject(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Department::class, fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id", nullable = false)
     var department: Department = department
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = User::class, fetch = FetchType.LAZY)
     @JoinColumn(name = "professor_id", nullable = false)
     var professor: User = professor
 
@@ -53,7 +53,7 @@ class Subject(
     var closeAt: LocalTime = closeAt
 
     @OneToMany(
-        mappedBy = "subject",
+        targetEntity = Course::class,
         fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL])
     @JoinColumn(name = "subject_id")

@@ -23,7 +23,7 @@ class User(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Department::class, fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id", nullable = true)
     var department: Department? = department
 
@@ -46,14 +46,14 @@ class User(
     var role: UserRole = UserRole.valueOf(role)
 
     @OneToMany(
-        mappedBy = "user",
+        targetEntity = Subject::class,
         fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL])
     @JoinColumn(name = "user_id")
     var subjects: MutableList<Subject> = mutableListOf()
 
     @OneToMany(
-        mappedBy = "user",
+        targetEntity = Course::class,
         fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL])
     @JoinColumn(name = "user_id")

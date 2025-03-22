@@ -14,11 +14,11 @@ class Course(student: User, subject: Subject) {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = User::class, fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id", nullable = false)
     var student: User = student
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Subject::class, fetch = FetchType.LAZY)
     @JoinColumn(name = "subject_id", nullable = false)
     var subject: Subject = subject
 
