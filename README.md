@@ -65,32 +65,7 @@
 # 🧩 설계
 
 ## ERD
-![academic-management (1)](https://github.com/user-attachments/assets/abba19de-d3e3-4248-b2f5-c0dcc674301c)
-
-### 1️⃣ 사용자 Table
-|id|department_id|name|login_id|password|code|academic_year|role|created_at|updated_at|
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|1|NULL|관리자|admin123|$2a$10$Mi5YA9IEJZngR7FDIjdPoecNm71JImr4D5tQMpGlZ0.QUxLKihT5e|NULL|NULL|ADMIN|2025-01-07 05:22:01.046133|2025-01-07 05:22:01.046133|
-|2|1|파이썬|py123|$2a$10$Mi5YA9fijs8gR7fkCblPoecNm71JImr4D5tQMpGlZ0.QUxLKihT5e|202501001|2025|STUDENT|2025-02-07 05:22:01.046133|2025-02-08 05:22:01.046133|
-|3|1|코틀린|kotlin123|$2a$10$Mi5YA9IEJZngR7fkCblPoecNm71J8fs9f5tQMpGlZ0.QUxLKihT5e|P202501001|2025|PROFESSOR|2025-02-09 05:22:01.046133|2025-02-09 05:22:01.046133|
-
-### 2️⃣ 학과 Table
-|id|code|name|created_at|updated_at|
-|:---:|:---:|:---:|:---:|:---:|
-|1|01|컴퓨터학과|2025-01-07 11:22:01.046133|2025-01-07 11:22:01.046133|
-|2|02|정보통신공학과|2025-01-07 11:22:01.046133|2025-01-07 11:22:01.046133|
-
-### 3️⃣ 과목 Table
-|id|department_id|professor_id|name|credits|subject_type|max_capacity|week_day|open_at|close_at|created_at|updated_at|
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|1|1|3|자바 프로그래밍|3|MAJOR|30|MON|10:00:00|13:00:00|2025-02-10 10:22:01.046133|2025-02-10 10:22:01.046133|
-|2|1|3|컴퓨터의 이해|2|ELECTIVE|20|WED|10:00:00|12:00:00|2025-02-10 10:22:01.046133|2025-02-10 10:22:01.046133|
-
-### 4️⃣ 수강 신청 Table
-|id|student_id|subject_id|created_at|
-|:---:|:---:|:---:|:---:|
-|1|2|1|2025-02-24 10:22:01.046133|
-|2|2|2|2025-02-24 10:23:01.046133|
+![academic-management](https://github.com/user-attachments/assets/4f276e8f-40aa-4560-a619-520c8918c22b)
 
 ## API 명세서
 
