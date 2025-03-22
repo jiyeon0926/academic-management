@@ -13,7 +13,7 @@ class UserController(private val userService: UserService) {
 
     // 프로필 조회
     @GetMapping("/{userId}")
-    fun getUserById(@PathVariable userId: Long): UserResDto {
-        return userService.getUserById(userId)
+    fun findUserById(@PathVariable userId: Long): UserResDto {
+        return  userService.findUserById(userId)
     }
 }
