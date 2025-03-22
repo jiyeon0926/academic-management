@@ -6,14 +6,14 @@ import com.kotlin.academic.global.common.entity.BaseEntity
 import jakarta.persistence.*
 
 @Entity
-class Department(code: Int, name: String) : BaseEntity() {
+class Department(code: String, name: String) : BaseEntity() {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
     @Column(unique = true)
-    var code: Int = code
+    var code: String = code
 
     @Column(length = 30)
     var name: String = name
