@@ -65,7 +65,7 @@
 # 🧩 설계
 
 ## ERD
-![academic-management](https://github.com/user-attachments/assets/4f276e8f-40aa-4560-a619-520c8918c22b)
+![academic-management (1)](https://github.com/user-attachments/assets/2be6842d-37fa-4f4b-b279-9c53785956cf)
 
 ## API 명세서
 
