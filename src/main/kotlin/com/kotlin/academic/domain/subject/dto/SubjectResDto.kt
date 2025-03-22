@@ -1,6 +1,7 @@
 package com.kotlin.academic.domain.subject.dto
 
 import com.kotlin.academic.domain.subject.entity.Subject
+import java.time.LocalDateTime
 import java.time.LocalTime
 
 data class SubjectResDto(
@@ -13,7 +14,9 @@ data class SubjectResDto(
     val maxCapacity: Int,
     val weekDay: String,
     val openAt: LocalTime,
-    val closeAt: LocalTime) {
+    val closeAt: LocalTime,
+    val createdAt: LocalDateTime,
+    val updateAt: LocalDateTime) {
 
     constructor(subject: Subject) : this(
         id = subject.id,
@@ -25,6 +28,8 @@ data class SubjectResDto(
         maxCapacity = subject.maxCapacity,
         weekDay = subject.weekDay.name,
         openAt = subject.openAt,
-        closeAt = subject.closeAt
+        closeAt = subject.closeAt,
+        createdAt = subject.createdAt,
+        updateAt = subject.updatedAt
     )
 }
