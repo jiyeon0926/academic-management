@@ -12,7 +12,7 @@ class Department(code: String, name: String) : BaseEntity() {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
-    @Column(unique = true)
+    @Column(unique = true, length = 2)
     var code: String = code
 
     @Column(length = 30)
