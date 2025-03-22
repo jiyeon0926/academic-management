@@ -19,14 +19,14 @@ class Department(code: String, name: String) : BaseEntity() {
     var name: String = name
 
     @OneToMany(
-        targetEntity = User::class,
+        mappedBy = "department",
         fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL])
     @JoinColumn(name = "department_id")
     var users: MutableList<User> = mutableListOf()
 
     @OneToMany(
-        targetEntity = Subject::class,
+        mappedBy = "department",
         fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL])
     @JoinColumn(name = "department_id")

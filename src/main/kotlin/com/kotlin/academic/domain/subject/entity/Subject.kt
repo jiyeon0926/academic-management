@@ -53,7 +53,7 @@ class Subject(
     var closeAt: LocalTime = closeAt
 
     @OneToMany(
-        targetEntity = Course::class,
+        mappedBy = "subject",
         fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL])
     @JoinColumn(name = "subject_id")

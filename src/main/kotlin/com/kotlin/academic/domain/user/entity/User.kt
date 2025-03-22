@@ -46,14 +46,14 @@ class User(
     var role: UserRole = UserRole.valueOf(role)
 
     @OneToMany(
-        targetEntity = Subject::class,
+        mappedBy = "user",
         fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL])
     @JoinColumn(name = "user_id")
     var subjects: MutableList<Subject> = mutableListOf()
 
     @OneToMany(
-        targetEntity = Course::class,
+        mappedBy = "user",
         fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL])
     @JoinColumn(name = "user_id")
