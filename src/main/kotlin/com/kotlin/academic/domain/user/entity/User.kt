@@ -23,7 +23,7 @@ class User(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
-    @ManyToOne(targetEntity = Department::class, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id", nullable = true)
     var department: Department? = department
 
