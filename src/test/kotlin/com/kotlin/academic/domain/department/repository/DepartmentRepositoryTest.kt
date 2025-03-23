@@ -60,4 +60,13 @@ class DepartmentRepositoryTest(@Autowired val departmentRepository: DepartmentRe
         logger.info { department.name }
         logger.info { "findById 테스트 종료" }
     }
+
+    @Test
+    fun testFindDepartmentByCode() {
+        logger.info { "FindDepartmentByCode 테스트 시작" }
+        val department = departmentRepository.findDepartmentByCode("01").get()
+        logger.info { department.code }
+        logger.info { department.name }
+        logger.info { "FindDepartmentByCode 테스트 종료" }
+    }
 }
