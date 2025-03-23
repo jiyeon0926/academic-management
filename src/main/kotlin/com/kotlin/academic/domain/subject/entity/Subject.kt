@@ -58,4 +58,17 @@ class Subject(
         cascade = [CascadeType.ALL])
     @JoinColumn(name = "subject_id")
     var courses: MutableList<Course> = mutableListOf()
+
+    fun updateSubject(
+        newName: String,
+        maxCapacity: Int,
+        weekDay: String,
+        openAt: LocalTime,
+        closeAt: LocalTime) {
+        this.name = newName
+        this.maxCapacity = maxCapacity
+        this.weekDay = WeekDay.valueOf(weekDay.uppercase())
+        this.openAt = openAt
+        this.closeAt = closeAt
+    }
 }
