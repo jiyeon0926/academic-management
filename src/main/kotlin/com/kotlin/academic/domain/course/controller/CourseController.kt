@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/students/{studentId}")
+@RequestMapping("/students")
 class CourseController(private val courseService: CourseService) {
 
     // 수강 목록 조회
-    @GetMapping("/enrollments")
+    @GetMapping("/{studentId}/enrollments")
     fun findAll(): List<EnrollmentListResDto> {
         return courseService.findAll()
     }
