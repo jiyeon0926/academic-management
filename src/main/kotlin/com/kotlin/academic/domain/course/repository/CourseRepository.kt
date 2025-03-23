@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository
 @Repository
 interface CourseRepository : JpaRepository<Course, Long> {
 
-    fun findAllByStudentId(studentId: Long): List<Course>
+    fun findAllByStudent(student: User): List<Course>
 
     fun findCourseByIdAndStudent(id: Long, student: User): Course
 }

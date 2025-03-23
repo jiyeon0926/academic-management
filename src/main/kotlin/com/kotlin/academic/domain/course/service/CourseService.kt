@@ -17,8 +17,13 @@ class CourseService(
     private val subjectRepository: SubjectRepository) {
 
     @Transactional(readOnly = true)
-    fun findAllByStudentId(studentId: Long): List<EnrollmentListResDto> {
-        val courses = courseRepository.findAllByStudentId(studentId)
+    fun findAllByStudent(studentId: Long): List<EnrollmentListResDto> {
+        // 임시 유저, 수정 예정
+        val student = userRepository.findById(1L).orElseThrow {
+            throw CustomException(ErrorCode.USER_NOT_FOUND)
+        }
+
+        val courses = courseRepository.findAllByStudent(student)
 
         return courses.map { course -> EnrollmentListResDto(course) }
     }
