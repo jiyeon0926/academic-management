@@ -17,8 +17,8 @@ class CourseService(
     private val subjectRepository: SubjectRepository) {
 
     @Transactional(readOnly = true)
-    fun findAll(): List<EnrollmentListResDto> {
-        val courses = courseRepository.findAll()
+    fun findAllByStudentId(studentId: Long): List<EnrollmentListResDto> {
+        val courses = courseRepository.findAllByStudentId(studentId)
 
         return courses.map { course -> EnrollmentListResDto(course) }
     }

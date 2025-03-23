@@ -13,8 +13,8 @@ class CourseController(private val courseService: CourseService) {
 
     // 수강 목록 조회
     @GetMapping("/{studentId}/enrollments")
-    fun findAll(): List<EnrollmentListResDto> {
-        return courseService.findAll()
+    fun findAllByStudentId(@PathVariable studentId: Long): List<EnrollmentListResDto> {
+        return courseService.findAllByStudentId(studentId)
     }
 
     // 수강 신청
