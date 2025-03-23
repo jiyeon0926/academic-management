@@ -52,7 +52,9 @@ class CourseService(
             throw CustomException(ErrorCode.USER_NOT_FOUND)
         }
 
-        val course = courseRepository.findCourseByIdAndStudent(enrollmentId, student)
+        val course = courseRepository.findCourseByIdAndStudent(enrollmentId, student).orElseThrow {
+            throw CustomException(ErrorCode.COURSE_NOT_FOUND)
+        }
         courseRepository.delete(course)
     }
 }

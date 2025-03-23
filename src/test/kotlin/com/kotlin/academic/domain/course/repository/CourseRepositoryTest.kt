@@ -118,7 +118,10 @@ class CourseRepositoryTest(
     fun testFindCourseByIdAndStudent() {
         logger.info { "findCourseByIdAndStudent 테스트 시작" }
         val student = userRepository.findById(1L).get()
-        val course = courseRepository.findCourseByIdAndStudent(1L, student)
+        val course = courseRepository.findCourseByIdAndStudent(1L, student).get()
+
+        logger.info { "학생 이름: ${student.name}" }
+        logger.info { "수강 과목의 학생 이름: ${course.student.name}" }
         assertThat(course.student).isEqualTo(student)
         logger.info { "findCourseByIdAndStudent 테스트 종료" }
     }
