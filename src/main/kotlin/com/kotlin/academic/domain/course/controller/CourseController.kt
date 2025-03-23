@@ -13,8 +13,10 @@ class CourseController(private val courseService: CourseService) {
 
     // 수강 목록 조회
     @GetMapping("/{studentId}/enrollments")
-    fun findAllByStudent(@PathVariable studentId: Long): List<EnrollmentListResDto> {
-        return courseService.findAllByStudent(studentId)
+    fun findAllByStudent(@PathVariable studentId: Long): ResponseEntity<List<EnrollmentListResDto>> {
+        val all = courseService.findAllByStudent(studentId)
+
+        return ResponseEntity(all, HttpStatus.OK)
     }
 
     // 수강 신청

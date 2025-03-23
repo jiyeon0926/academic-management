@@ -14,8 +14,10 @@ class DepartmentAdminController(private val departmentService: DepartmentService
 
     // 학과 단 건 조회
     @GetMapping("/{departmentId}")
-    fun findDepartmentById(@PathVariable departmentId: Long): DepartmentResDto {
-        return  departmentService.findDepartmentById(departmentId)
+    fun findDepartmentById(@PathVariable departmentId: Long): ResponseEntity<DepartmentResDto> {
+        val departmentResDto = departmentService.findDepartmentById(departmentId)
+
+        return ResponseEntity(departmentResDto, HttpStatus.OK)
     }
 
     // 학과 등록
