@@ -22,6 +22,7 @@ class UserRepositoryTest(
     @Autowired val departmentRepository: DepartmentRepository) {
 
     val DATA_SIZE = 5
+    val DATA_SIZE_TWO = 3
 
     private fun createDepartment(): Department {
         val department = Department(
@@ -32,7 +33,7 @@ class UserRepositoryTest(
         return department
     }
 
-    private fun createdStudent(n: Int, department: Department): User {
+    private fun createStudent(n: Int, department: Department): User {
         val formattedNumber = n.toString().padStart(3, '0')
 
         val student = User(
@@ -48,6 +49,22 @@ class UserRepositoryTest(
         return student
     }
 
+    private fun createProfessor(n: Int, department: Department): User {
+        val formattedNumber = n.toString().padStart(3, '0')
+
+        val professor = User(
+            department = department,
+            name = "이름 ${n}",
+            loginId = "p${n}",
+            password = "${n}",
+            code = "P2025${department.code}$formattedNumber",
+            academicYear = Year.now(),
+            role = UserRole.PROFESSOR.name
+        )
+
+        return professor
+    }
+
     @BeforeAll
     fun beforeAll() {
         logger.info { "데이터 초기화 이전 조회 시작" }
@@ -59,10 +76,11 @@ class UserRepositoryTest(
         val department = createDepartment()
         departmentRepository.save(department)
 
-        for (i in 1..DATA_SIZE) {
-            val students = createdStudent(i, department)
-            userRepository.save(students)
-        }
+        val students = (1..DATA_SIZE).map { createStudent(it, department) }
+        val professors = (1..DATA_SIZE_TWO).map { createProfessor(it, department) }
+
+        userRepository.saveAll(students + professors)
+
         logger.info { "테스트 데이터 초기화 종료" }
     }
 
@@ -96,5 +114,22 @@ class UserRepositoryTest(
         logger.info { "department: ${department.name}, 학생 수: $count" }
         assertThat(count).isEqualTo(DATA_SIZE.toLong())
         logger.info { "countByDepartment 테스트 종료" }
+    }
+
+    @Test
+    fun testCountByDepartmentAndRole() {
+        logger.info { "countByDepartmentAndRole 테스트 시작" }
+        val department = departmentRepository.findAll().firstOrNull()
+            ?: throw IllegalStateException("데이터가 없습니다.")
+
+        val studentCount = userRepository.countByDepartmentAndRole(department, UserRole.STUDENT)
+        logger.info { "department: ${department.name}, 학생 수: $studentCount" }
+        assertThat(studentCount).isEqualTo(DATA_SIZE.toLong())
+
+        val professorCount = userRepository.countByDepartmentAndRole(department, UserRole.PROFESSOR)
+        logger.info { "department: ${department.name}, 교수 수: $professorCount" }
+        assertThat(professorCount).isEqualTo(DATA_SIZE_TWO.toLong())
+
+        logger.info { "countByDepartmentAndRole 테스트 종료" }
     }
 }
