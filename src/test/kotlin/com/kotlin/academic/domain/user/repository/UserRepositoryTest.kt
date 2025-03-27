@@ -85,4 +85,16 @@ class UserRepositoryTest(
         logger.info { user.academicYear }
         logger.info { "findById 테스트 종료" }
     }
+
+    @Test
+    fun testCountByDepartment() {
+        logger.info { "countByDepartment 테스트 시작" }
+        val department = departmentRepository.findAll().firstOrNull()
+            ?: throw IllegalStateException("데이터가 없습니다.")
+        val count = userRepository.countByDepartment(department)
+
+        logger.info { "department: ${department.name}, 학생 수: $count" }
+        assertThat(count).isEqualTo(DATA_SIZE.toLong())
+        logger.info { "countByDepartment 테스트 종료" }
+    }
 }
